@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-🧭 AŞAMA 5 – Gelecek Talep Tahmini (Forecast Generation)
-🎯 Amaç:
+ AŞAMA 5 – Gelecek Talep Tahmini (Forecast Generation)
+ Amaç:
 - best_model.joblib yüklenir
 - Son tarihten itibaren 5 gün ileriye her mağaza×ürün için tahmin üretilir (test modu)
 - Lag ve rolling özellikleri iteratif olarak güncellenir
@@ -14,9 +14,9 @@ import pandas as pd
 from joblib import load
 
 # -------------------------------
-# 🔧 Kullanıcı parametreleri (Test Modu)
+#  Kullanıcı parametreleri (Test Modu)
 # -------------------------------
-FORECAST_DAYS = 5          # ⚡ hızlı test için sadece 5 günlük tahmin
+FORECAST_DAYS = 5          #  hızlı test için sadece 5 günlük tahmin
 PROMO_SCENARIO = 0         # Gelecek günler için kampanya yok varsayımı
 OIL_FFILL = True           # Petrol fiyatını ileri doldur (gelecek için aynı değeri kullan)
 # -------------------------------
@@ -38,7 +38,7 @@ FEATURES = [
     "family_encoded"
 ]
 
-print("📦 Veri ve model yükleniyor...")
+print(" Veri ve model yükleniyor...")
 if not os.path.exists(train_feat_path):
     raise FileNotFoundError(f"Bulunamadı: {train_feat_path}")
 
@@ -47,7 +47,7 @@ if not os.path.exists(best_model_path):
 
 df = pd.read_csv(train_feat_path, parse_dates=["date"])
 model = load(best_model_path)
-print("✅ train_featured ve best_model yüklendi.")
+print(" train_featured ve best_model yüklendi.")
 print("   train_featured shape:", df.shape)
 
 # Yardımcı tablolar
@@ -92,7 +92,7 @@ if OIL_FFILL:
     future["dcoilwtico"].fillna(last_oil, inplace=True)
 
 # -------------------------------
-# 🔁 İteratif tahmin (lag & rolling güncelleme)
+#  İteratif tahmin (lag & rolling güncelleme)
 # -------------------------------
 history = (
     df.sort_values("date")
@@ -170,5 +170,5 @@ pred_df = pd.DataFrame(pred_rows).sort_values(["store_nbr", "family", "date"])
 out_path = os.path.join(OUT_DIR, "forecast_results.csv")
 pred_df.to_csv(out_path, index=False, encoding="utf-8-sig")
 
-print(f"✅ Tahmin tamamlandı. Kaydedildi: {out_path}")
+print(f" Tahmin tamamlandı. Kaydedildi: {out_path}")
 print(pred_df.head(10))

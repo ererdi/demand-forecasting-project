@@ -2,35 +2,35 @@
 # OptiStock - Data Exploration (EDA)
 # ------------------------------
 
-# 1️⃣ Gerekli kütüphaneleri içe aktar
+# 1 Gerekli kütüphaneleri içe aktar
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 2️⃣ CSV dosyasını oku
+# 2 CSV dosyasını oku
 # Not: dosya yolu proje yapına göre ../data/train.csv şeklinde
 data_path = "data/train.csv"
 
 df = pd.read_csv(data_path)
 
-# 3️⃣ İlk 5 satırı göster
-print("📄 İlk 5 Satır:")
+# 3 İlk 5 satırı göster
+print(" İlk 5 Satır:")
 print(df.head())
 
-# 4️⃣ Veri bilgisi
-print("\n📊 Veri Bilgisi:")
+# 4 Veri bilgisi
+print("\n Veri Bilgisi:")
 print(df.info())
 
-# 5️⃣ Sayısal kolonların özet istatistikleri
-print("\n📈 İstatistiksel Özeti:")
+# 5 Sayısal kolonların özet istatistikleri
+print("\n İstatistiksel Özeti:")
 print(df.describe())
 
-# 6️⃣ Eksik değer kontrolü
-print("\n🔍 Eksik Değer Sayısı:")
+# 6 Eksik değer kontrolü
+print("\n Eksik Değer Sayısı:")
 print(df.isna().sum())
 
-# 7️⃣ Basit satış trendi grafiği
-print("\n📉 Günlük toplam satış grafiği oluşturuluyor...")
+# 7 Basit satış trendi grafiği
+print("\n Günlük toplam satış grafiği oluşturuluyor...")
 
 # Tarih formatına dönüştür
 df['date'] = pd.to_datetime(df['date'])

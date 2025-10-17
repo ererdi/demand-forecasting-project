@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-📊 AŞAMA 7 – Yönetim Özeti Tablosu
-🎯 Amaç:
+ AŞAMA 7 – Yönetim Özeti Tablosu
+ Amaç:
 Business_summary.csv verisini sadeleştirerek yönetim dilinde yorumlanabilir hale getirmek.
 """
 
@@ -40,7 +40,7 @@ bottom10 = df.sort_values("Ortalama Hata (%)", ascending=False).head(10)
 os.makedirs("outputs", exist_ok=True)
 output_path = "outputs/management_report.csv"
 df.to_csv(output_path, index=False)
-print(f"💾 Yönetim özeti kaydedildi: {output_path}")
+print(f" Yönetim özeti kaydedildi: {output_path}")
 
-print("\n🔹 En iyi 5 tahmin:")
+print("\n En iyi 5 tahmin:")
 print(top10.head(5)[["Mağaza", "Ürün Grubu", "Ortalama Hata (%)", "Yorum"]])

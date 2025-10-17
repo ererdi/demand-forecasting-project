@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-🚀 AŞAMA 4 – Model Training & Evaluation
-🎯 Amaç:
+ AŞAMA 4 – Model Training & Evaluation
+ Amaç:
 Hazırlanan veriyi (train_featured.csv) kullanarak farklı regresyon modelleriyle satış tahmini yapmak
 ve model performanslarını (RMSE, MAPE, SMAPE, WMAPE, R²) karşılaştırmak.
 """
@@ -27,11 +27,11 @@ def wmape(y_true, y_pred):
     return 100 * np.sum(np.abs(y_true - y_pred)) / np.sum(np.abs(y_true) + 1e-8)
 
 # --- Veri Yükleme ---
-print("📂 Veri yükleniyor...")
+print(" Veri yükleniyor...")
 data_path = "outputs/train_featured.csv"
 df = pd.read_csv(data_path, parse_dates=["date"])
 
-print("✅ Veri başarıyla yüklendi. Boyut:", df.shape)
+print(" Veri başarıyla yüklendi. Boyut:", df.shape)
 
 # --- Eksik değerleri doldurma (mean/median yöntemi) ---
 numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns
@@ -51,7 +51,7 @@ X = df[features]
 y = df[target]
 
 # --- Train / Test Split ---
-print("✂️ Veri train ve test olarak ayrılıyor...")
+print(" Veri train ve test olarak ayrılıyor...")
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print("Train set:", X_train.shape, "Test set:", X_test.shape)
 
@@ -66,7 +66,7 @@ models = {
 results = []
 
 for name, model in models.items():
-    print(f"\n🤖 {name} modeli eğitiliyor...")
+    print(f"\n {name} modeli eğitiliyor...")
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
@@ -99,6 +99,6 @@ os.makedirs("outputs", exist_ok=True)
 results_path = "outputs/model_results.csv"
 results_df.to_csv(results_path, index=False)
 
-print("\n📊 Tüm model sonuçları:")
+print("\n Tüm model sonuçları:")
 print(results_df)
-print(f"\n💾 Sonuç dosyası kaydedildi: {results_path}")
+print(f"\n Sonuç dosyası kaydedildi: {results_path}")
