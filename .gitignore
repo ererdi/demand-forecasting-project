@@ -1,0 +1,4 @@
+# Ignore large data files
+data/train.csv
+outputs/train_featured.csv
+outputs/*.csv
