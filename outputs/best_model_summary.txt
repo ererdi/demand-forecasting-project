@@ -1,0 +1,5 @@
+🏆 En İyi Model Özeti
+====================
+Model: LightGBM
+RMSE: 197.62
+R²: 0.967

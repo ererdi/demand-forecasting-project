@@ -1,0 +1,10 @@
+🏆 Best LightGBM Parameters (Fast Mode):
+learning_rate: 0.1
+max_depth: 12
+n_estimators: 500
+num_leaves: 70
+random_state: 42
+
+RMSE: 182.71
+MAPE: 3733758694931260.50
+R²: 0.972
