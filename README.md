@@ -7,7 +7,7 @@ It helps identify which stores and product categories are expected to sell more 
 
 ## Goal
 
-The main goal was to build a forecasting model that can predict future sales based on historical data and external factors such as store info, promotions, oil prices, and holidays.
+The main goal is to build a forecasting model that predicts future sales using historical data and external factors such as store information, promotions, oil prices, and holidays.
 
 ---
 
@@ -17,22 +17,36 @@ The main goal was to build a forecasting model that can predict future sales bas
 - 54 stores and 33 product categories  
 - Features include: `store_nbr`, `family`, `onpromotion`, `date`, `oil price`, `holiday flag`, lag features, and rolling averages.  
 
-Large raw files (over 100MB) are not included due to GitHub limits.  
-All scripts are available in the `/src` folder.
+> Note: Large raw files (over 100MB) are not included due to GitHub size limits.  
+> All scripts are available in the `/src` folder.
 
 ---
 
 ## Project Structure
 
+demand_forecast_project/
+│
+├── data/ # Raw input data (ignored in repo)
+├── outputs/ # Model outputs and reports
+├── src/ # Python source code
+│ ├── feature_engineering.py
+│ ├── model_training.py
+│ ├── model_tuning.py
+│ ├── model_summary.py
+│ ├── forecast_generation.py
+│ ├── forecast_analysis.py
+│ └── forecast_viz.py
+└── README.md
+
 ---
 
 ## Model Training
 
-- Model: LightGBM Regressor  
-- Hyperparameter tuning with GridSearchCV  
-- Metrics: RMSE, MAPE, R²  
+- Algorithm: LightGBM Regressor  
+- Hyperparameter tuning with `GridSearchCV`  
+- Evaluation metrics: RMSE, MAPE, R²  
 
-Best model results:
+**Best Model Results:**
 - MAPE: ~17%  
 - R²: 0.83  
 
@@ -40,7 +54,7 @@ Best model results:
 
 ## Results
 
-**Top Performing Categories:**
+### Top Performing Categories
 | Category | Avg Predicted Sales |
 |-----------|--------------------|
 | GROCERY I | 142.0 |
@@ -49,7 +63,7 @@ Best model results:
 | CLEANING | 108.8 |
 | DAIRY | 103.0 |
 
-**Lowest Performing Categories:**
+### Lowest Performing Categories
 | Category | Avg Predicted Sales |
 |-----------|--------------------|
 | LADIESWEAR | 47.7 |
@@ -60,25 +74,33 @@ Best model results:
 
 ---
 
+## Visualizations
+
+The following visualizations summarize forecast insights:
+
+![Top 10 Stores](top10_stores.png)
+![Top 10 Families](top10_families.png)
+![Bottom 10 Families](bottom10_families.png)
+
+---
+
 ## Power BI Dashboard
 
-Power BI report visualizes store accuracy, forecast vs actual, and category performance.  
-File: `Demand_Forecast_Dashboard.pbix`
+A Power BI dashboard (`Demand_Forecast_Dashboard.pbix`) was created to visualize store-level accuracy, forecast vs. actual comparison, and product category performance.
 
-Key Insights
+---
 
-The model predicts around 83% of store-level demand correctly.
+## Key Insights
 
-Grocery and Produce categories dominate total sales.
+- The model predicts around **83% of store-level demand** correctly.  
+- Grocery and Produce categories dominate total sales.  
+- Categories such as Magazines and Hardware show lower demand.  
+- These forecasts help optimize inventory and marketing strategies.
 
-Categories such as Magazines and Hardware show lower demand.
+---
 
-Helps improve inventory and marketing planning.
+## Future Improvements
 
-Future Improvements
-
-Try other models such as LSTM, Prophet, or XGBoost.
-
-Add weather and macroeconomic indicators.
-
-Automate weekly forecast updates.
+- Test advanced models like **LSTM**, **Prophet**, and **XGBoost**.  
+- Add **weather** and **macroeconomic** indicators.  
+- Automate **weekly forecast updates** for continuous improvement.
