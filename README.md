@@ -22,24 +22,6 @@ The main goal is to build a forecasting model that predicts future sales using h
 
 ---
 
-## Project Structure
-
-demand_forecast_project/
-│
-├── data/ # Raw input data (ignored in repo)
-├── outputs/ # Model outputs and reports
-├── src/ # Python source code
-│ ├── feature_engineering.py
-│ ├── model_training.py
-│ ├── model_tuning.py
-│ ├── model_summary.py
-│ ├── forecast_generation.py
-│ ├── forecast_analysis.py
-│ └── forecast_viz.py
-└── README.md
-
----
-
 ## Model Training
 
 - Algorithm: LightGBM Regressor  
